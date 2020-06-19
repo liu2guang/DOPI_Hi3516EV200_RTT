@@ -10,7 +10,7 @@ DOPI HI3516EV200 是 Tony 大佬推出的一款基于 ARM Cortex-A7 内核的开
 
 开发板外观如下图所示：
 
-![board](figures/board.png)
+![board](./figures/board.png)
 
 该开发板常用 **板载资源** 如下：
 
