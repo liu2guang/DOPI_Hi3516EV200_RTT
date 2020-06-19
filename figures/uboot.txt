@@ -1,0 +1,15 @@
+arch=arm
+baudrate=115200
+board=hi3516ev200
+board_name=hi3516ev200
+bootargs=mem=40M console=tty0 console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=yaffs2 rw mtdparts=hinand:512K(boot),5120K(kernel),125440K(rootfs)
+bootcmd=nand read 0x40000000 0x100000 0x100000; go 0x40000000
+bootdelay=2
+cpu=armv7
+ethact=eth0
+soc=hi3516ev200
+stderr=serial
+stdin=serial
+stdout=serial
+vendor=hisilicon
+verify=n

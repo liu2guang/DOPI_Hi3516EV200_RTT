@@ -1,0 +1,6 @@
+/build
+/*.dblite
+/rtconfig.pyc
+/rtthread.bin
+/rtthread.elf
+/rtthread.map
