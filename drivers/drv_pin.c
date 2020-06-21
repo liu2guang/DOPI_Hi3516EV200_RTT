@@ -182,7 +182,8 @@ static struct _pin_index pin_index[] =
     {88,    GPIO1_REG_BASE, 0, iocfg_reg45, 0x00}, /* GPIO1_0 */ 
 };
 
-int rt_gpio_set_func(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_t drive_capability, rt_uint32_t func)
+/* 设置管脚复用 */ 
+int rt_gpio_set_func(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_t drive_capability, rt_uint32_t func, rt_uint8_t dir)
 {
     rt_uint32_t val = 0;
     rt_uint32_t addr = 0;  
@@ -191,22 +192,8 @@ int rt_gpio_set_func(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_
     if(speed) {val &= ~(1 << 10);} else {val |= 1 << 10;}   // 0low, 1high
     if(pull == 1) {val |= 0x1 << 8;}                        // 0none, 1down, 2up
     if(pull == 2) {val |= 0x2 << 8;}
-    val |= func;                                            // gpio func
+    val |= (drive_capability<<4 | func);                   // gpio func
     writel(val, pin_index[pin].mux_base); 
-
-    return RT_EOK;   
-}
-
-static int hi3516ev200_gpio_init(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_t drive_capability, rt_uint8_t dir)
-{
-    rt_uint32_t val = 0;
-    rt_uint32_t addr = 0; 
-
-    // val = readl(pin_index[pin].mux_base);
-
-    /* SPEED PULL FUNC */ 
-    rt_gpio_set_func(pin, speed, pull, drive_capability, pin_index[pin].mux_func); 
-    rt_kprintf("pin = %d, mode(0x%.8x) = 0x%.8x\n", pin, pin_index[pin].mux_base, val); 
 
     /* DIR */
     addr = GPIO_DIR(pin_index[pin].gpio_base);
@@ -214,7 +201,16 @@ static int hi3516ev200_gpio_init(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pul
     if(dir) {val |= 1 << pin_index[pin].pin;} else {val &= ~(1 << pin_index[pin].pin);}
     writel(val, addr);
 
-    rt_kprintf("pin = %d, dirx(0x%.8x) = 0x%.8x\n", pin, addr, val); 
+    // rt_kprintf("pin = %d, dirx(0x%.8x) = 0x%.8x\n", pin, addr, val); 
+
+    return RT_EOK;   
+}
+
+int hi3516ev200_gpio_init(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_t drive_capability, rt_uint8_t dir)
+{
+    rt_uint32_t val = 0;
+    rt_gpio_set_func(pin, speed, pull, drive_capability, pin_index[pin].mux_func, dir); 
+    // rt_kprintf("pin = %d, mode(0x%.8x) = 0x%.8x\n", pin, pin_index[pin].mux_base, val); 
 
     return RT_EOK;
 }

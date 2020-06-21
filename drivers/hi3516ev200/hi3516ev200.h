@@ -48,6 +48,10 @@ typedef unsigned long long UINT64;
 #define readw(address)          GET_UINT16(address)
 #define readl(address)          GET_UINT32(address)
 
+#define SET_UINT32(bit, Addr)   ((Addr) |= (1<<(bit)))
+
+#define CLR_UINT32(bit, Addr)   ((Addr) &= ~(1<<(bit)))
+
 #define MAX_HANDLERS        (OS_HWI_MAX_NUM+1) 
 #define ARM_GIC_NR_IRQS     (OS_HWI_MAX_NUM+1) 
 #define ARM_GIC_MAX_NR      1     

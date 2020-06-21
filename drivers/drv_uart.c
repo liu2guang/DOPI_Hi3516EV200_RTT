@@ -185,8 +185,8 @@ int rt_hw_uart_init(void)
     #define PIN_74_UART0_RX_FUNC 0x01
     #define PIN_73_UART0_TX_FUNC 0x01
 
-    rt_gpio_set_func(73, 1, 0, 0, PIN_73_UART0_TX_FUNC); 
-    rt_gpio_set_func(74, 1, 0, 0, PIN_74_UART0_RX_FUNC); 
+    rt_gpio_set_func(73, 1, 0, 0, PIN_73_UART0_TX_FUNC, 1); 
+    rt_gpio_set_func(74, 1, 0, 0, PIN_74_UART0_RX_FUNC, 0); 
 
     /* register UART0 device */
     rt_hw_serial_register(&_serial0, "uart0",

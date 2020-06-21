@@ -6,7 +6,9 @@ board.c
 drv_clock.c
 drv_uart.c
 drv_pin.c
+drv_spi.c
 drv_watchdog.c
+drv_lcd.c
 ''')
 
 list = os.listdir(cwd)
