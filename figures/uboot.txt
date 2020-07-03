@@ -1,3 +1,4 @@
+原本的
 arch=arm
 baudrate=115200
 board=hi3516ev200
@@ -13,3 +14,7 @@ stdin=serial
 stdout=serial
 vendor=hisilicon
 verify=n
+
+# 每次更新完uboot后需要手动配置
+setenv bootcmd "nand read 0x40000000 0x100000 0x100000; go 0x40000000"
+saveenv

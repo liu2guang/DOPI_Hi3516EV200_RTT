@@ -9,7 +9,7 @@
 
 int main(int argc, char **argv)
 {
-    /* mount ROMFS as root directory */
+    /* mount ROMFS as root directory */ 
     extern const struct romfs_dirent romfs_root;
     if (dfs_mount(RT_NULL, "/", "rom", 0, (const void *)(&romfs_root)) == 0)
     {
@@ -19,6 +19,6 @@ int main(int argc, char **argv)
     {
         rt_kprintf("ROMFS File System initialized Failed!\n");
     }
-
+    
     return 0;
 }

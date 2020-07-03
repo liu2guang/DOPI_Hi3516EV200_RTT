@@ -10,74 +10,6 @@
 
 #define PIN_NUM(n) (sizeof(n) / sizeof(n[0]))
 
-#define GPIO_DATA(base, off) (((base) + 0x000) + (1 << ((off) + 2)))
-#define GPIO_DIR(base)       ((base) + 0x400)
-#define GPIO_IS(base)        ((base) + 0x404)
-#define GPIO_IBE(base)       ((base) + 0x408)
-#define GPIO_IEV(base)       ((base) + 0x40C)
-#define GPIO_IE(base)        ((base) + 0x410)
-#define GPIO_RIS(base)       ((base) + 0x414)
-#define GPIO_MIS(base)       ((base) + 0x418)
-#define GPIO_IC(base)        ((base) + 0x41C)
-
-/* Hi3516EV200_PINOUT_CN.xlsx */ 
-#define iocfg_reg00          0x100C0000
-#define iocfg_reg01          0x100C0004
-#define iocfg_reg02          0x100C0008
-#define iocfg_reg03          0x100C000C
-#define iocfg_reg04          0x100C0010
-#define iocfg_reg05          0x100C0014
-#define iocfg_reg06          0x100C0018
-#define iocfg_reg07          0x100C001C
-#define iocfg_reg08          0x100C0020
-#define iocfg_reg09          0x100C0024
-#define iocfg_reg10          0x100C0028
-#define iocfg_reg11          0x100C002C
-
-#define iocfg_reg12          0x100C0040
-#define iocfg_reg13          0x100C0044
-#define iocfg_reg14          0x100C0048
-#define iocfg_reg15          0x100C004C
-#define iocfg_reg16          0x100C0050
-#define iocfg_reg17          0x100C0054
-#define iocfg_reg18          0x100C005C
-
-#define iocfg_reg19          0x112C0000
-#define iocfg_reg20          0x112C0004
-#define iocfg_reg21          0x112C0008
-#define iocfg_reg22          0x112C000C
-#define iocfg_reg23          0x112C0010
-#define iocfg_reg24          0x112C0014
-
-#define iocfg_reg25          0x112C0028
-#define iocfg_reg26          0x112C002C
-#define iocfg_reg27          0x112C0030
-#define iocfg_reg28          0x112C0034
-#define iocfg_reg29          0x112C0038
-#define iocfg_reg30          0x112C003C
-#define iocfg_reg31          0x112C0040
-#define iocfg_reg32          0x112C0044
-#define iocfg_reg33          0x112C0048
-#define iocfg_reg34          0x112C004C
-#define iocfg_reg35          0x112C0050
-#define iocfg_reg36          0x112C0054
-#define iocfg_reg37          0x112C0058
-#define iocfg_reg38          0x112C005C
-#define iocfg_reg39          0x112C0060
-#define iocfg_reg40          0x112C0064
-#define iocfg_reg41          0x112C0068
-#define iocfg_reg42          0x112C006C
-#define iocfg_reg43          0x112C0070
-#define iocfg_reg44          0x112C0074
-
-#define iocfg_reg45          0x120C0000
-#define iocfg_reg46          0x120C0004
-#define iocfg_reg47          0x120C0010
-#define iocfg_reg48          0x120C0014
-#define iocfg_reg49          0x120C0018
-#define iocfg_reg50          0x120C001C
-#define iocfg_reg51          0x120C0020
-
 struct _pin_index
 {
     rt_uint8_t  id;
@@ -192,7 +124,7 @@ int rt_gpio_set_func(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_
     if(speed) {val &= ~(1 << 10);} else {val |= 1 << 10;}   // 0low, 1high
     if(pull == 1) {val |= 0x1 << 8;}                        // 0none, 1down, 2up
     if(pull == 2) {val |= 0x2 << 8;}
-    val |= (drive_capability<<4 | func);                   // gpio func
+    val |= (drive_capability<<4 | func);                    // gpio func
     writel(val, pin_index[pin].mux_base); 
 
     /* DIR */
@@ -208,10 +140,7 @@ int rt_gpio_set_func(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_
 
 int hi3516ev200_gpio_init(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, rt_uint8_t drive_capability, rt_uint8_t dir)
 {
-    rt_uint32_t val = 0;
     rt_gpio_set_func(pin, speed, pull, drive_capability, pin_index[pin].mux_func, dir); 
-    // rt_kprintf("pin = %d, mode(0x%.8x) = 0x%.8x\n", pin, pin_index[pin].mux_base, val); 
-
     return RT_EOK;
 }
 

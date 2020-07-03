@@ -5,14 +5,19 @@ src  = Split('''
 board.c
 drv_clock.c
 drv_uart.c
-drv_pin.c
 drv_spi.c
+drv_pin.c
+lcd/drv_lcd.c
+lcd/drv_lcd_ili9341.c
 drv_watchdog.c
-drv_lcd.c
+audio/amp.c
+audio/codec.c
+audio/aiao.c
+audio/drv_sound.c
 ''')
 
 list = os.listdir(cwd)
-CPPPATH = [cwd, cwd+'/hi3516ev200']
+CPPPATH = [cwd, cwd+'/hi3516ev200', cwd+'/lcd', cwd+'/audio']
 objs = []
 
 group = DefineGroup('Drivers', src, depend = [''], CPPPATH = CPPPATH)

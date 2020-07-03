@@ -7,7 +7,7 @@
 #define __DRV_WATCHDOG_H__
 
 #include "rtthread.h"
-#include "platform.h"
+#include "hi_chip.h"
 
 int rt_hw_wdt_init(void); 
 

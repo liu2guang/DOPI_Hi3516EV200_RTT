@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2006-2018, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+#ifndef __HI_INTERRUPT_H__
+#define __HI_INTERRUPT_H__
+
+#define HI_INTERRUPT_MIN       0
+#define HI_INTERRUPT_RTC       32
+#define HI_INTERRUPT_SOFTWARE  33
+#define HI_INTERRUPT_WDG       34
+#define HI_INTERRUPT_LSADC     36
+#define HI_INTERRUPT_TIMER0    37
+#define HI_INTERRUPT_TIMER1    37
+#define HI_INTERRUPT_TIMER2    38
+#define HI_INTERRUPT_TIMER3    38
+#define HI_INTERRUPT_UART0     39
+#define HI_INTERRUPT_UART1     40
+#define HI_INTERRUPT_UART2     41
+#define HI_INTERRUPT_I2C0      43
+#define HI_INTERRUPT_I2C1      44
+#define HI_INTERRUPT_I2C2      45
+#define HI_INTERRUPT_SPI0      46
+#define HI_INTERRUPT_SPI1      47
+#define HI_INTERRUPT_GPIO0     48
+#define HI_INTERRUPT_GPIO1     49
+#define HI_INTERRUPT_GPIO2     50
+#define HI_INTERRUPT_GPIO3     51
+#define HI_INTERRUPT_GPIO4     52
+#define HI_INTERRUPT_GPIO5     53
+#define HI_INTERRUPT_GPIO6     54
+#define HI_INTERRUPT_GPIO7     55
+#define HI_INTERRUPT_GPIO8     56
+#define HI_INTERRUPT_GPIO9     57
+#define HI_INTERRUPT_SDIO0     62
+#define HI_INTERRUPT_SDIO1     63
+#define HI_INTERRUPT_FMC       64
+#define HI_INTERRUPT_ETH       65
+#define HI_INTERRUPT_SPACC     66
+#define HI_INTERRUPT_DMAC      70
+#define HI_INTERRUPT_USB_2     71
+#define HI_INTERRUPT_USB_EHCI  71
+#define HI_INTERRUPT_USB_DEV   71
+#define HI_INTERRUPT_VDP0      72
+#define HI_INTERRUPT_AIAO      74
+#define HI_INTERRUPT_VICAP     75
+#define HI_INTERRUPT_VIPROC    76
+#define HI_INTERRUPT_MIPI_RX   77
+#define HI_INTERRUPT_VPSS      78
+#define HI_INTERRUPT_VEDU      79
+#define HI_INTERRUPT_JPEG      80
+#define HI_INTERRUPT_VGS       81
+#define HI_INTERRUPT_GZIP      82
+#define HI_INTERRUPT_IVE       83
+#define HI_INTERRUPT_DDRT      85
+#define HI_INTERRUPT_DDR_ERR   86
+#define HI_INTERRUPT_A7_COMMTX 88
+#define HI_INTERRUPT_A7_COMMRX 89
+#define HI_INTERRUPT_A7_PMUIRQ 90
+#define HI_INTERRUPT_FEPHY     91
+#define HI_INTERRUPT_MAX       96
+
+#endif  /* __HI_INTERRUPT_H__ */

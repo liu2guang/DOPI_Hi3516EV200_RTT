@@ -7,7 +7,7 @@
 #define __DRV_UART_H__
 
 #include "rtthread.h"
-#include "platform.h"
+#include "hi_chip.h"
 
 #define BSP_USING_UART0
 

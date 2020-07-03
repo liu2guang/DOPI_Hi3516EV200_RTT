@@ -7,7 +7,7 @@
 #define __DRV_PIN_H__
 
 #include "rtthread.h"
-#include "platform.h"
+#include "hi_chip.h"
 
 int rt_hw_pin_init(void); 
 int rt_gpio_set_func(rt_base_t pin, rt_uint8_t speed, rt_uint8_t pull, 

@@ -30,24 +30,20 @@ void rt_hw_board_init(void)
     /* initialize PLLs and the clock tree */
     hi3516e_clock_init(); 
 
+    /* init hardware interrupt */
+    rt_hw_uart_init(); 
+    
+#ifdef RT_USING_CONSOLE
+    /* set console device */
+    rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
+#endif /* RT_USING_CONSOLE */
+
 #ifdef RT_USING_HEAP
     /* init memory system */
     rt_kprintf("head start: 0x%08x, head end: 0x%08x.\n", (rt_uint32_t) RT_HW_HEAP_BEGIN, (rt_uint32_t) RT_HW_HEAP_END);
     rt_system_heap_init(RT_HW_HEAP_BEGIN, RT_HW_HEAP_END);
 #endif
 
-    // hi3516e_uart_init(); 
-    rt_hw_uart_init(); 
-    rt_kprintf("\n\n\n"); 
-#if defined(BSP_USING_UART0) || defined(BSP_USING_UART1) || defined(BSP_USING_UART2)
-    /* init hardware interrupt */
-    rt_hw_uart_init();
-#endif
-
-#ifdef RT_USING_CONSOLE
-    /* set console device */
-    rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
-#endif /* RT_USING_CONSOLE */
 
 #ifdef RT_USING_COMPONENTS_INIT
     rt_components_board_init();

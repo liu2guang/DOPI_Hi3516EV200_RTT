@@ -38,6 +38,7 @@
 #define RT_USING_MEMPOOL
 #define RT_USING_MEMHEAP
 #define RT_USING_SMALL_MEM
+#define RT_USING_MEMTRACE
 #define RT_USING_HEAP
 
 /* Kernel Device Object */
@@ -57,6 +58,7 @@
 
 /* C++ features */
 
+#define RT_USING_CPLUSPLUS
 
 /* Command shell */
 
@@ -67,7 +69,7 @@
 #define FINSH_USING_SYMTAB
 #define FINSH_USING_DESCRIPTION
 #define FINSH_THREAD_PRIORITY 20
-#define FINSH_THREAD_STACK_SIZE 4096
+#define FINSH_THREAD_STACK_SIZE 409600
 #define FINSH_CMD_SIZE 80
 #define FINSH_USING_MSH
 #define FINSH_USING_MSH_DEFAULT
@@ -95,6 +97,10 @@
 #define RT_USING_PIN
 #define RT_USING_SPI
 #define RT_USING_WDT
+#define RT_USING_AUDIO
+#define RT_AUDIO_REPLAY_MP_BLOCK_SIZE 4096
+#define RT_AUDIO_REPLAY_MP_BLOCK_COUNT 2
+#define RT_AUDIO_RECORD_PIPE_SIZE 2048
 
 /* Using USB */
 
@@ -153,13 +159,6 @@
 
 /* tools packages */
 
-#define PKG_USING_COREMARK
-#define COREMARK_ITERATIONS 24000
-
-/* You may ajust this number to make sure the benchmark runs for at least 10s */
-
-#define PKG_USING_COREMARK_LATEST_VERSION
-#define CORE_MARK_HAS_FLOAT 0
 
 /* system packages */
 
@@ -172,13 +171,6 @@
 
 /* samples: kernel and components samples */
 
-
-/* Privated Packages of RealThread */
-
-
-/* Network Utilities */
-
-#define PKG_USING_COREMARK_V100
 
 /* Hardware Drivers Config */
 
@@ -194,5 +186,6 @@
 
 /* Board extended module Drivers */
 
+#include "rtconfig_project.h"
 
 #endif

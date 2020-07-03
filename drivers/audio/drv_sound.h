@@ -3,12 +3,9 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-#ifndef __DRV_MIC_H__
-#define __DRV_MIC_H__
+#ifndef __DRV_SOUND_H__
+#define __DRV_SOUND_H__
 
 #include "rtthread.h"
-#include "platform.h"
-
-int rt_hw_mic_init(void); 
 
 #endif 

@@ -10,6 +10,7 @@
 #include "drv_pin.h" 
 
 #define BSP_USING_SPI0
+#define BSP_USING_SPI1
 
 /* 开启SPI时钟 */
 static void spi_clk_enable(rt_uint32_t spi_base)
